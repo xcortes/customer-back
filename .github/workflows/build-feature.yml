@@ -42,6 +42,7 @@ jobs:
 #######################################################
   merge-feature-into-develop:
     runs-on: ubuntu-latest
+    #runs-on: ubuntu-24.08 ya migro a 26-04 a partir del 19/10/2026
     needs: build-feature
     if: ${{ success() }}
     #[For a specific job, you can use jobs.<job_id>.permissions to modify the default permissions granted to the GITHUB_TOKEN](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
@@ -86,7 +87,7 @@ jobs:
       ######################################################## 
       - name: trigger deploy artifact
         if: success()
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
