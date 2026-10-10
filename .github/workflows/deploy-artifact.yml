@@ -23,7 +23,7 @@ jobs:
         id: download-artifact
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          workflow: publish-jar-as-artifact.yaml
+          workflow: publish-jar-as-artifact.yml
           workflow_conclusion: success
           name: artifactjar
           path: /tmp/artifactjar
@@ -136,5 +136,3 @@ jobs:
           push : true # Push image to registry, false by deafult.
           tags : ghcr.io/${{ github.repository_owner}}/cutomer-back:${{ github.sha }} # The image ful name, include repository, user, image name and tag 
     
-
-
