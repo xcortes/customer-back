@@ -34,6 +34,19 @@ public class CustomerController {
     @Autowired
     private CustomerRepository prsRepository;
 
+    @Value( "${db.password}" )
+    private String password;
+
+    @Operation(summary = "Test property")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the customers"),
+            @ApiResponse(responseCode = "404", description = "Not found the customers"),
+    })
+   @GetMapping("/testproperty")
+   public ResponseEntity<String> getTestValue() {    
+       return new ResponseEntity<>(password, HttpStatus.OK);
+   }
+    
     @Operation(summary = "Get all customers")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the customers"),
